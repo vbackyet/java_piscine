@@ -72,7 +72,10 @@ public class Program {
         while (num != 42)
         {
             if (is_prime(my_sum(num)))
+			{
+				
                 steps += 1;
+			}
             System.out.print("------>: ");
             num = in.nextInt();
         }
@@ -82,6 +85,3 @@ public class Program {
     }
     
 }
-
-
-// вопрос - почему у меня в ону линию тоже считывается??
