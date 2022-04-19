@@ -8,7 +8,7 @@ public class User {
     private Integer Identifier;
 
     // конструктор
-    private User(String Name, Integer Balance, Integer Identifier)
+    public User(String Name, Integer Balance, Integer Identifier)
     {
         setName(Name);
         setIdentifier(Identifier);
@@ -44,6 +44,13 @@ public class User {
 		return Balance;
 	}
 
+	public String print_user() {
+		return "User{" +
+				"identifier=" + Identifier +
+				", name='" + Name + '\'' +
+				", balance=" + Balance +
+				'}';
+	}
 
 
     
