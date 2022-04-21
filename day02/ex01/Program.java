@@ -117,3 +117,6 @@ public class Program {
 
     }
 }
+
+
+// вопрос - set addElement vector
