@@ -1,7 +1,9 @@
-package ex00;
+package edu.school21.printer.logic;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+
+
 public class ParseImage {
 	public static int[][] image_pict;
 	public static int length;
@@ -24,20 +26,19 @@ public class ParseImage {
 			System.out.println();
 		}
 	}
-	ParseImage(BufferedImage image_in, char pre_white, char pre_black)
+	public ParseImage(BufferedImage image_in, char pre_white, char pre_black)
 	{
 		image = image_in;
 		length = image.getHeight();
 		width = image.getWidth();
 		white = pre_white;
 		black = pre_black;
-		image_pict = new int[length][width];
+		image_pict = new int[width][length];
 		for (int i = 0; i < length; i++)
 		{
 			for (int j = 0; j < width; j++)
 			{
 				image_pict[j][i] = image.getRGB(j, i);
-				// image.getRGB(i, j);
 			}
 		}
 	}

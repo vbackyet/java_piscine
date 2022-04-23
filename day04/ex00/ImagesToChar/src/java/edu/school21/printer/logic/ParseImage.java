@@ -33,7 +33,7 @@ public class ParseImage {
 		width = image.getWidth();
 		white = pre_white;
 		black = pre_black;
-		image_pict = new int[length][width];
+		image_pict = new int[width][length];
 		for (int i = 0; i < length; i++)
 		{
 			for (int j = 0; j < width; j++)

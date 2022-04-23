@@ -1,4 +1,6 @@
-package ex00;
+package edu.school21.printer.app;
+
+import edu.school21.printer.logic.ParseImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +14,7 @@ public class Program
 	static String path;
 	public static void pars_the_args(String[] args)
 	{
-		if (args.length != 3)
+		if (args.length != 2)
 		{
 			System.err.println("Что то не так с аргументами!");
 			System.exit(-1);
@@ -23,7 +25,7 @@ public class Program
 			{
 				white = args[0].toCharArray()[0];
 				black = args[1].toCharArray()[0];
-				path = args[2];
+				path = "/resources/it.bmp";
 			}
 			catch (Exception e)
 			{
@@ -35,10 +37,9 @@ public class Program
 	public static void main(String[] args) throws IOException
 	{
 		try{
-			
 		pars_the_args(args);
-		File file = new File(path);
-		BufferedImage image = ImageIO.read(file);
+		// File file = new File(path);
+		BufferedImage image = ImageIO.read(ParseImage.class.getResource(path));
 		ParseImage myImage = new ParseImage(image, white, black);
 		myImage.draw_the_picture();
 		}
