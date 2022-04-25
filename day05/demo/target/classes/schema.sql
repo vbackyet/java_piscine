@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    login text UNIQUE NOT NULL,
+    password text NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS rooms (
+    id SERIAL PRIMARY KEY,
+    name TEXT UNIQUE NOT NULL,
+    owner INTEGER REFERENCES chat.users(id) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+    id SERIAL PRIMARY KEY,
+    author INTEGER REFERENCES users(id) NOT NULL,
+    room INTEGER REFERENCES rooms(id) NOT NULL,
+    text TEXT NOT NULL,
+    timestamp TIMESTAMP NOT NULL
+);
