@@ -18,7 +18,7 @@
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire/surefirebooter1157264436865605202.jar /Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire 2022-04-27T15-10-20_538-jvmRun1 surefire7507286292131346473tmp surefire_07741217976372190307tmp"/>
+    <property name="sun.java.command" value="/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire/surefirebooter3890592582269844981.jar /Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire 2022-04-27T16-16-33_184-jvmRun1 surefire5689754996928965754tmp surefire_08292076570936537235tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="surefire.test.class.path" value="/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/test-classes:/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/classes:/Users/vbackyet/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/vbackyet/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/vbackyet/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/vbackyet/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/vbackyet/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire/surefirebooter1157264436865605202.jar"/>
+    <property name="surefire.real.class.path" value="/Users/vbackyet/Desktop/jv_pisc/day06/ex00/Tests/target/surefire/surefirebooter3890592582269844981.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
@@ -62,23 +62,23 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="isPrimeForNotPrimes(int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.032"/>
-  <testcase name="isPrimeForNotPrimes(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
+  <testcase name="isPrimeForNotPrimes(int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.031"/>
+  <testcase name="isPrimeForNotPrimes(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0.002"/>
   <testcase name="isPrimeForNotPrimes(int)[3]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
-  <testcase name="isPrimeForNotPrimes(int)[4]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
+  <testcase name="isPrimeForNotPrimes(int)[4]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
   <testcase name="isPrimeForNotPrimes(int)[5]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
-  <testcase name="isDigitTest(int, int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
+  <testcase name="isDigitTest(int, int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.002"/>
   <testcase name="isDigitTest(int, int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isDigitTest(int, int)[3]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isDigitTest(int, int)[4]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isDigitTest(int, int)[5]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
-  <testcase name="isPrimeForPrimes(int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.002"/>
-  <testcase name="isPrimeForPrimes(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
+  <testcase name="isPrimeForPrimes(int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.003"/>
+  <testcase name="isPrimeForPrimes(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isPrimeForPrimes(int)[3]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isPrimeForPrimes(int)[4]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
-  <testcase name="isPrimeForPrimes(int)[5]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
+  <testcase name="isPrimeForPrimes(int)[5]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isPrimeForIncorrectNumbers(int)[1]" classname="edu.school21.numbers.NumberWorkerTest" time="0.002"/>
-  <testcase name="isPrimeForIncorrectNumbers(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
+  <testcase name="isPrimeForIncorrectNumbers(int)[2]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
   <testcase name="isPrimeForIncorrectNumbers(int)[3]" classname="edu.school21.numbers.NumberWorkerTest" time="0"/>
   <testcase name="isPrimeForIncorrectNumbers(int)[4]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
   <testcase name="isPrimeForIncorrectNumbers(int)[5]" classname="edu.school21.numbers.NumberWorkerTest" time="0.001"/>
