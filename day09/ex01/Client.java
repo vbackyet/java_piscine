@@ -3,6 +3,8 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.lang.model.util.ElementScanner6;
+
 class ClientSomthing {
     
     private Socket socket;
@@ -12,6 +14,7 @@ class ClientSomthing {
     private String addr; // ip адрес клиента
     private int port; // порт соединения
     private String option; // имя клиента
+	public String nickname; 
     
     public ClientSomthing(String addr, int port) {
         this.addr = addr;
@@ -56,17 +59,28 @@ class ClientSomthing {
 			{
 				System.out.println("enter signing");
 				SigningIn SigningIn = new SigningIn();
-				SigningIn.start();
-				SigningIn.join();
+				SigningIn.run();
+				nickname = "entr";
+				// SigningIn.join();
 			}
 			else if(option.equals("SignUp"))
 			{
 				System.out.println("enter signup");
 				SigningUp SigningUp = new SigningUp();
-				SigningUp.start();
-				SigningUp.join();
+				SigningUp.run();
+				nickname = "entr";
+				// SigningUp.join();
 			}
-            // out.write("Hello " + nickname + "\n");
+			else
+			{
+				System.out.println("No such command!((");
+				
+			}	
+			new ReadMsg().start(); // нить читающая сообщения из сокета в бесконечном цикле
+            new WriteMsg().start(); // нить пишущая сообщения в сокет приходящие с консоли в бесконечном цикле
+			
+			
+			// out.write("Hello " + nickname + "\n");
             // out.flush();
         } catch (IOException ignored) {
         }
@@ -84,10 +98,57 @@ class ClientSomthing {
             }
         } catch (IOException ignored) {}
     }
-    
-    // регистрация еоу
-    private class SigningIn extends Thread {
+    // наше чтение и написание сообщений 
+    private class ReadMsg extends Thread {
         @Override
+        public void run() {
+            
+            String str;
+            try {
+                while (true) {
+                    str = in.readLine(); // ждем сообщения с сервера
+                    if (str.equals("stop")) {
+                        ClientSomthing.this.downService(); // харакири
+                        break; // выходим из цикла если пришло "stop"
+                    }
+                    System.out.println(str); // пишем сообщение с сервера на консоль
+                }
+            } catch (IOException e) {
+                ClientSomthing.this.downService();
+            }
+        }
+    }
+    
+    // нить отправляющая сообщения приходящие с консоли на сервер
+    public class WriteMsg extends Thread {
+        
+        @Override
+        public void run() {
+            while (true) {
+                String userWord;
+                try {
+                    userWord = inputUser.readLine(); // сообщения с консоли
+					System.out.println("userWord: " + userWord);
+                    if (userWord.equals("stop")) {
+                        out.write("stop" + "\n");
+                        ClientSomthing.this.downService(); // харакири
+                        break; // выходим из цикла если пришло "stop"
+                    } else {
+                        out.write(nickname + ": " + userWord + "\n"); // отправляем на сервер
+                    }
+                    out.flush(); // чистим
+                } catch (IOException e) {
+                    ClientSomthing.this.downService(); // в случае исключения тоже харакири
+                    
+                }
+                
+            }
+        }
+    }
+
+    // регистрация еоу
+    private class SigningIn{
+        // @Override
         public void run() {
             
             String str;
@@ -95,12 +156,20 @@ class ClientSomthing {
                 
 					out.write("signin\n");
 					out.flush(); 
+					while(true)
+					{
                     str = in.readLine(); // ждем сообщения с сервера
+					System.out.println(str);
+					
                     if (str.equals("stop")) {
-                        ClientSomthing.this.downService(); // харакири
-                        // break; // выходим из цикла если пришло "stop"
+                        // ClientSomthing.this.downService(); // харакири
+                        break; // выходим из цикла если пришло "stop"
                     }
-                    System.out.println(str); // пишем сообщение с сервера на консоль
+					option = inputUser.readLine();
+					out.write(option + "\n");
+					out.flush(); 
+				}
+                    // System.out.println(str); // пишем сообщение с сервера на консоль
                 
             } catch (IOException e) {
                 ClientSomthing.this.downService();
@@ -109,26 +178,32 @@ class ClientSomthing {
     }
     
     // нить отправляющая сообщения приходящие с консоли на сервер
-    public class SigningUp extends Thread {
+    public class SigningUp {
         
-        @Override
+        // @Override
         public void run() {
             while (true) {
-                String userWord;
-                try {
-					System.out.println("here");
-					out.write("signup\n");
+                // String userWord;
+				try {
+                
+					out.write("signin\n");
 					out.flush(); 
-  					// userWord = inputUser.readLine(); // сообщения с консоли
-                    // if (userWord.equals("stop")) {
-                    //     out.write("stop" + "\n");
-                    //     ClientSomthing.this.downService(); // харакири
-                    //     break; // выходим из цикла если пришло "stop"
-                    // } else {
-                    //     // out.write(nickname + ": " + userWord + "\n"); // отправляем на сервер
-                    // }
-                    // out.flush(); // чистим
-                } catch (IOException e) {
+					while(true)
+					{
+						String str = in.readLine(); // ждем сообщения с сервера
+						System.out.println(str);
+						
+						if (str.equals("stop")) {
+							// ClientSomthing.this.downService(); // харакири
+							break; // выходим из цикла если пришло "stop"
+						}
+						option = inputUser.readLine();
+						out.write(option + "\n");
+						out.flush(); 
+					}
+			}
+                    // System.out.println(str); // пишем сообщение с сервера на консоль
+                 catch (IOException e) {
                     ClientSomthing.this.downService(); // в случае исключения тоже харакири
                     
                 }

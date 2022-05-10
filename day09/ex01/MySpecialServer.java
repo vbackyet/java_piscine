@@ -19,53 +19,101 @@ class MySpecialServer extends Thread {
     public void run() {
         String word;
         try {
-            // первое сообщение отправленное сюда - это никнейм
-            word = in.readLine();
-            try {
-                out.write(word + "\n");
-                out.flush(); // flush() нужен для выталкивания оставшихся данных
-                // если такие есть, и очистки потока для дьнейших нужд
-            } catch (IOException ignored) {}
-            try {
+            // // первое сообщение отправленное сюда - это никнейм
+            // word = in.readLine();
+            // try {
+            //     out.write(word + "\n");
+            //     out.flush(); // flush() нужен для выталкивания оставшихся данных
+            //     // если такие есть, и очистки потока для дьнейших нужд
+            // } catch (IOException ignored) {}
+            // try {
                 while (true) {
                     word = in.readLine();
-					System.out.println(word);
+					System.out.println("my word: :" +word);
                     if(word.equals("stop")) {
                         this.downService(); // харакири
                         break; // если пришла пустая строка - выходим из цикла прослушки
                     }
 					else if(word.equals("signin"))
 					{
-						System.out.println("puk puk zdec");
+						// System.out.println("puk puk zdec");
 						signinprocess();
 					}
+					else if(word.equals("signup"))
+					{
+						// System.out.println("puk puk zdec");
+						signupprocess();
+					}
+					while (true) {
+						word = in.readLine();
+						System.out.println("Echoing: ");
+						if(word.equals("stop")) {
+							this.downService(); // харакири
+							break; // если пришла пустая строка - выходим из цикла прослушки
+						}
+						System.out.println("Echoing: " + word);
+						// Server.story.addStoryEl(word);
+						for (MySpecialServer vr : Server.serverList)  {
+							vr.send(word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
+						}
+					}
+					this.downService();
 					// else if(word.equals("stop"))
 					// {
 						
 					// }
-                    System.out.println("Echoing: " + word);
-                    for (MySpecialServer vr : Server.serverList) {
-                        vr.send(word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
-                    }
+                    // System.out.println("Echoing: " + word);
+                    // for (MySpecialServer vr : Server.serverList) {
+                    //     vr.send(word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
+                    // }
                 }
             } catch (NullPointerException ignored) {}
+			catch (IOException e) {
+				    this.downService();
+				}
 
             
-        } catch (IOException e) {
-            this.downService();
-        }
+        // } catch (IOException e) {
+        //     this.downService();
+        // }
     }
 	private void signinprocess()
+	{
+		try 
+		{
+		System.out.println("puk puk zdec2");
+		out.write("Enter username:\n");
+		out.flush(); 
+		String username = in.readLine();
+		System.out.println("the name is: " + username);
+		out.write("Enter password:\n");
+		out.flush(); 
+		String password = in.readLine();
+		System.out.println(username + "== " + password);
+		out.write("stop\n");
+		out.flush();
+	 }
+
+		catch (IOException ignored){
+
+		}
+	}
+	private void signupprocess()
 	{
 		try 
 		{
 		out.write("Enter username:\n");
 		out.flush(); 
 		String username = in.readLine();
+		System.out.println("the name is: " + username);
 		out.write("Enter password:\n");
 		out.flush(); 
 		String password = in.readLine();
-		System.out.println(username + "== " + password);}
+		System.out.println(username + "== " + password);
+		out.write("stop\n");
+		out.flush();
+	 }
+
 		catch (IOException ignored){
 
 		}
@@ -88,10 +136,10 @@ class MySpecialServer extends Thread {
                 socket.close();
                 in.close();
                 out.close();
-                for (MySpecialServer vr : Server.serverList) {
-                    if(vr.equals(this)) vr.interrupt();
-                    Server.serverList.remove(this);
-                }
+                // for (MySpecialServer vr : Server.serverList) {
+                //     if(vr.equals(this)) vr.interrupt();
+                //     Server.serverList.remove(this);
+                // }
             }
         } catch (IOException ignored) {}
     }
