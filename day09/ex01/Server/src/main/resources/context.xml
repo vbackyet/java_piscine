@@ -24,7 +24,5 @@
     </bean>
 	
 
-	<!-- Сам bean для messages -->
-
 
 </beans>
