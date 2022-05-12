@@ -12,6 +12,7 @@ public interface MessagesRepository {
 	boolean email_is_free(String my_email);
 	boolean is_exist(User my_user);
 	boolean register(User my_user);
+	int find_index_by_email(String email);
     // void update(T entity);
     // void delete(int id) throws SQLException;
 }

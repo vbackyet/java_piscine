@@ -20,18 +20,6 @@ public class User {
 	public Integer getUSER_ID() {
 		return USER_ID;
 	}
-	// public ArrayList<Chatroom> getUSING_CHATROOMS() {
-	// 	return USING_CHATROOMS;
-	// }
-	// public void setUSING_CHATROOMS(ArrayList<Chatroom> uSING_CHATROOMS) {
-	// 	this.USING_CHATROOMS = uSING_CHATROOMS;
-	// }
-	// public ArrayList<Chatroom> getCREATED_CHATROOMS() {
-	// 	return CREATED_CHATROOMS;
-	// }
-	// public void setCREATED_CHATROOMS(ArrayList<Chatroom> cREATED_CHATROOMS) {
-	// 	this.CREATED_CHATROOMS = cREATED_CHATROOMS;
-	// }
 	public String getPASSWORD() {
 		return PASSWORD;
 	}

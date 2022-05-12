@@ -16,11 +16,11 @@ import school21.spring.service.models.User;
 
 public class MessagesRepositoryJdbcTemplate implements MessagesRepository{
 	private NamedParameterJdbcTemplate jdbcTemplate;
-    private final String saveQuery = "INSERT INTO chat.msgs (room_id, sender, message) VALUES (100, :sender, :message)";
+    private final String saveQuery = "INSERT INTO chat.msgs (room_id, sender, message) VALUES (5, :sender, :message)";
     private final String email_is_freeQuery = "SELECT * FROM chat.users WHERE login = :login";
     private final String is_existQuery = "SELECT * FROM chat.users WHERE login = :login and passwd = :passwd";
     private final String registerQuery = "insert into chat.users (login, passwd) VALUES (:login, :passwd);";
-  	
+	private final String find_id = "SELECT id from chat.users where login = :login;";
 
     // public void UsersRepositoryJdbcTemplateImpl(NamedParameterJdbcTemplate jdbcTemplate) {
     //     // super(dataSource);
@@ -41,13 +41,15 @@ public class MessagesRepositoryJdbcTemplate implements MessagesRepository{
 	public boolean save(Message entity) {
 		try
 		{
+			System.out.println("Tut sohranyayu soobshenie");
 			jdbcTemplate.update(saveQuery, new MapSqlParameterSource()
-			.addValue("sender", entity.getAuthor())
+			.addValue("sender", entity.getAuthor().getUSER_ID())
 			.addValue("message", entity.getText()));
 			return true;
 		}
 		catch(Exception e)
 		{
+			System.out.println(e);
 			return false;
 		}
 	}
@@ -81,6 +83,14 @@ public class MessagesRepositoryJdbcTemplate implements MessagesRepository{
 		catch (Exception e){
 			return false;
 		}
+	}
+
+	@Override
+	public int find_index_by_email(String email) {
+				User user = jdbcTemplate.query(email_is_freeQuery,
+		new MapSqlParameterSource().addValue("login", email),
+				new UserRowMapper()).stream().findAny().orElse(null);
+		return user.getUSER_ID();
 	}
 	
 }

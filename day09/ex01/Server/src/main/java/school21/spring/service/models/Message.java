@@ -32,6 +32,10 @@ public class Message {
 		return author;
 	}
 
+	public String getNameOfUser() {
+		return author.getLOGIN();
+	}
+
 	public void setAuthor(User author) {
 		this.author = author;
 	}

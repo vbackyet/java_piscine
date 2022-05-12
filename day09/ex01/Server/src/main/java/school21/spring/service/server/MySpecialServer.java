@@ -13,6 +13,9 @@ class MySpecialServer extends Thread {
     private BufferedReader in; // поток чтения из сокета
     private BufferedWriter out; // поток завписи в сокет
     UsersService my_Service = new UsersServiceImpl();
+
+	String name;
+	String message;
     public MySpecialServer(Socket socket) throws IOException {
         this.socket = socket;
         // если потоку ввода/вывода приведут к генерированию искдючения, оно проброситься дальше
@@ -45,6 +48,8 @@ class MySpecialServer extends Thread {
 							break; // если пришла пустая строка - выходим из цикла прослушки
 						}
 						System.out.println("Echoing: " + word);
+    // UsersService my_Service = new UsersServiceImpl();
+						my_Service.saveMSG(name, word);
 						// Server.story.addStoryEl(word);
 						for (MySpecialServer vr : Server.serverList)  {
 							vr.send(word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
@@ -86,7 +91,10 @@ class MySpecialServer extends Thread {
 		out.write("stop\n");
 		out.flush();
 		if (my_Service.signIN(username, password))
+		{
+			name = username;
 			System.out.println("SUCCESSSSSS");
+		}
 		System.out.println("Fail epic");
 	 }
 
@@ -109,7 +117,10 @@ class MySpecialServer extends Thread {
 		out.write("stop\n");
 		out.flush();
 		if (my_Service.signUP(username, password))
+		{
+			name = username;
 			System.out.println("SUCCESSSSSS");
+		}
 		System.out.println("Fail epic");	
 	 }
 
