@@ -1,6 +1,10 @@
 package school21.spring.service.server;
 
 import java.net.*;
+
+import school21.spring.service.services.UsersService;
+import school21.spring.service.services.UsersServiceImpl;
+
 import java.io.*;
 class MySpecialServer extends Thread {
     
@@ -8,7 +12,7 @@ class MySpecialServer extends Thread {
     // кроме него - клиент и сервер никак не связаны
     private BufferedReader in; // поток чтения из сокета
     private BufferedWriter out; // поток завписи в сокет
-    
+    UsersService my_Service = new UsersServiceImpl();
     public MySpecialServer(Socket socket) throws IOException {
         this.socket = socket;
         // если потоку ввода/вывода приведут к генерированию искдючения, оно проброситься дальше
@@ -81,6 +85,9 @@ class MySpecialServer extends Thread {
 		System.out.println(username + "== " + password);
 		out.write("stop\n");
 		out.flush();
+		if (my_Service.signIN(username, password))
+			System.out.println("SUCCESSSSSS");
+		System.out.println("Fail epic");
 	 }
 
 		catch (IOException ignored){
@@ -101,6 +108,9 @@ class MySpecialServer extends Thread {
 		System.out.println(username + "== " + password);
 		out.write("stop\n");
 		out.flush();
+		if (my_Service.signUP(username, password))
+			System.out.println("SUCCESSSSSS");
+		System.out.println("Fail epic");	
 	 }
 
 		catch (IOException ignored){

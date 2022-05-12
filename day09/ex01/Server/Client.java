@@ -192,7 +192,7 @@ class ClientSomthing {
                 // String userWord;
 				try {
                 
-					out.write("signin\n");
+					out.write("signup\n");
 					out.flush(); 
 					while(true)
 					{

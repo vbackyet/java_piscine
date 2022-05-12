@@ -20,11 +20,20 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public boolean signUP(String email, String password) {
+		System.out.println("hete1");
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+		System.out.println("hete2");
 		MessagesRepository usersRepository = context.getBean("MessagesRepositoryJdbcTemplate", MessagesRepository.class);
+		System.out.println("hete3");
 		if (!usersRepository.email_is_free(email))
+		{
+
+			System.out.println("email is not free");
 			return false;
+		}
+		System.out.println("hete4");
 		User my_user = new User(200, email, password);
+		System.out.println("hete");
 		if (usersRepository.register(my_user))
 			return true;		
 		return false;	

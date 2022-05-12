@@ -57,7 +57,7 @@ public class MessagesRepositoryJdbcTemplate implements MessagesRepository{
 		User user = jdbcTemplate.query(email_is_freeQuery,
 		new MapSqlParameterSource().addValue("login", my_email),
 				new UserRowMapper()).stream().findAny().orElse(null);
-		return ((user == null)  ? false : true);
+		return ((user == null) ? true : false);
 		// return false;
 	}
 
@@ -71,10 +71,16 @@ public class MessagesRepositoryJdbcTemplate implements MessagesRepository{
 
 	@Override
 	public boolean register(User my_user) {
+		try
+		{
 		jdbcTemplate.update(registerQuery, new MapSqlParameterSource()
 		.addValue("login", my_user.getLOGIN())
 		.addValue("passwd", my_user.getPASSWORD()));
-		return false;
+		return true;
+		}
+		catch (Exception e){
+			return false;
+		}
 	}
 	
 }
