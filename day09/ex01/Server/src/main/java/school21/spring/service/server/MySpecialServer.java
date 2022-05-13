@@ -48,11 +48,10 @@ class MySpecialServer extends Thread {
 							break; // если пришла пустая строка - выходим из цикла прослушки
 						}
 						System.out.println("Echoing: " + word);
-    // UsersService my_Service = new UsersServiceImpl();
 						my_Service.saveMSG(name, word);
 						// Server.story.addStoryEl(word);
 						for (MySpecialServer vr : Server.serverList)  {
-							vr.send(word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
+							vr.send(name + ": " +word); // отослать принятое сообщение с привязанного клиента всем остальным влючая его
 						}
 					}
 					this.downService();
@@ -69,21 +68,14 @@ class MySpecialServer extends Thread {
 			catch (IOException e) {
 				    this.downService();
 				}
-
-            
-        // } catch (IOException e) {
-        //     this.downService();
-        // }
     }
 	private void signinprocess()
 	{
 		try 
 		{
-		System.out.println("puk puk zdec2");
 		out.write("Enter username:\n");
 		out.flush(); 
 		String username = in.readLine();
-		System.out.println("the name is: " + username);
 		out.write("Enter password:\n");
 		out.flush(); 
 		String password = in.readLine();
@@ -95,7 +87,8 @@ class MySpecialServer extends Thread {
 			name = username;
 			System.out.println("SUCCESSSSSS");
 		}
-		System.out.println("Fail epic");
+		else
+			System.out.println("Fail epic");
 	 }
 
 		catch (IOException ignored){
@@ -121,7 +114,8 @@ class MySpecialServer extends Thread {
 			name = username;
 			System.out.println("SUCCESSSSSS");
 		}
-		System.out.println("Fail epic");	
+		else
+			System.out.println("Fail epic");	
 	 }
 
 		catch (IOException ignored){

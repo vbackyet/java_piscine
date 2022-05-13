@@ -134,13 +134,12 @@ class ClientSomthing {
                 String userWord;
                 try {
                     userWord = inputUser.readLine(); // сообщения с консоли
-					System.out.println("userWord: " + userWord);
                     if (userWord.equals("stop")) {
                         out.write("stop" + "\n");
                         ClientSomthing.this.downService(); // харакири
                         break; // выходим из цикла если пришло "stop"
                     } else {
-                        out.write(nickname + ": " + userWord + "\n"); // отправляем на сервер
+                        out.write(userWord + "\n"); // отправляем на сервер
                     }
                     out.flush(); // чистим
                 } catch (IOException e) {
@@ -172,6 +171,8 @@ class ClientSomthing {
                         break; // выходим из цикла если пришло "stop"
                     }
 					option = inputUser.readLine();
+					if (str.equals("Enter username:"))
+						nickname = option;
 					out.write(option + "\n");
 					out.flush(); 
 				}
@@ -203,7 +204,10 @@ class ClientSomthing {
 							// ClientSomthing.this.downService(); // харакири
 							break; // выходим из цикла если пришло "stop"
 						}
+						
 						option = inputUser.readLine();
+						if (str.equals("Enter username:"))
+							nickname = option;
 						out.write(option + "\n");
 						out.flush(); 
 					}

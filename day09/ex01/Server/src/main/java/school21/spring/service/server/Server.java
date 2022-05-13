@@ -10,8 +10,7 @@ import java.util.LinkedList;
 public class Server {
 
     public static final int PORT = 8080;
-    public static ArrayList<MySpecialServer> serverList = new ArrayList<>(); // список всех нитей - экземпляров
-    // сервера, слушающих каждый своего клиента
+    public static ArrayList<MySpecialServer> serverList = new ArrayList<>(); 
 
     
     public static void main(String[] args) throws IOException {
